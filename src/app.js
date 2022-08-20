@@ -1,18 +1,30 @@
 import express from "express";
 
 const app = express();
-
-const livros = [
-    { id: 1, titulo: "Senhor dos Anéis" },
-    { id: 2, titulo: "O Hobbit" }
-];
+app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.status(200).send('Curso de node');
+    res.status(200).send('Rota raiz');
 });
 
 app.get('/livros', (req, res) => {
-    res.status(200).send(livros);
+    res.status(200).send('Retorna livros');
+});
+
+app.get('/livros/:id', (req, res) => {
+    res.status(200).send('Retorna livro por id');
+});
+
+app.post('/livros', (req, res) => {
+    res.status(201).send('Cria livro');
+});
+
+app.put('/livros/:id', (req, res) => {
+    res.status(200).send('Altera livro por id');
+});
+
+app.delete('/livros/:id', (req, res) => {
+    res.status(200).send('Deleta livro por id');
 });
 
 export default app;
