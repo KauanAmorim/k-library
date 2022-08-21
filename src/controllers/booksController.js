@@ -23,6 +23,17 @@ class BooksController {
             })
     }
 
+    static listBooksByEditora(req, res) {
+        const { editora } = req.query
+        Book.find({ editora: editora }, {}, (err, books) => {
+            if (!err) {
+                res.status(200).send(books);
+            } else {
+                res.status(404).send(err.message);
+            }
+        })
+    }
+
     static createBook(req, res) {
         const book = new Book(req.body);
         book.save(function (error) {
