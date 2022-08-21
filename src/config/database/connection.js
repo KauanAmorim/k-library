@@ -6,4 +6,9 @@ mongoose.connect(connectionLink);
 
 const database = mongoose.connection;
 
+database.on("error", console.log.bind(console, "Connection error"));
+database.once("open", () => {
+    console.log("Database opened");
+})
+
 export default database;
