@@ -2,10 +2,10 @@ import mongoose from "mongoose";
 
 const BookSchema = new mongoose.Schema({
     id:             { type: String },
-    titulo:         { type: String, required: true },
-    autor:          { type: mongoose.Schema.Types.ObjectId, ref: 'authors', required: true },
-    editora:        { type: String, required: true },
-    numeroPaginas:  { type: Number }
+    title:          { type: String, required: true },
+    author:         { type: mongoose.Schema.Types.ObjectId, ref: 'authors', required: true },
+    editor:         { type: String, required: true },
+    numberPages:    { type: Number }
 })
 
 const Book = mongoose.model('books', BookSchema);

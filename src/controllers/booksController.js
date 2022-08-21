@@ -4,7 +4,7 @@ class BooksController {
 
     static listBooks(req, res) {
         Book.find()
-            .populate('autor')
+            .populate('author')
             .exec((error, books) => {
                 res.status(200).json(books);
             });
@@ -13,7 +13,7 @@ class BooksController {
     static listBookById(req, res) {
         const { id } = req.params;
         Book.findById(id)
-            .populate('autor', 'nome')
+            .populate('author', 'name')
             .exec((err, books) => {
                 if (!err) {
                     res.status(200).send(books);
