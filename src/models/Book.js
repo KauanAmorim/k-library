@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const BooksSchema = new mongoose.Schema({
+const BookSchema = new mongoose.Schema({
     id:             { type: String },
     titulo:         { type: String, required: true },
     autor:          { type: String, required: true },
@@ -8,6 +8,6 @@ const BooksSchema = new mongoose.Schema({
     numeroPaginas:  { type: Number }
 })
 
-const Books = mongoose.model('books', BooksSchema);
+const Book = mongoose.model('books', BookSchema);
 
-export default Books;
+export default Book;

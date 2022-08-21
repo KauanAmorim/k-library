@@ -1,16 +1,16 @@
-import Books from "../models/Books.js";
+import Book from "../models/Book.js";
 
 class BooksController {
 
     static listBooks(req, res) {
-        Books.find((error, books) => {
+        Book.find((error, books) => {
             res.status(200).send(books);
         })
     }
 
     static listBookById(req, res) {
         const { id } = req.params;
-        Books.findById(id, (err, books) => {
+        Book.findById(id, (err, books) => {
             if (!err) {
                 res.status(200).send(books);
             } else {
@@ -20,7 +20,7 @@ class BooksController {
     }
 
     static createBook(req, res) {
-        const book = new Books(req.body);
+        const book = new Book(req.body);
         book.save(function (error) {
             if (error) {
                 res.status(500).send({ error: `${error.message} - error to save book` });
@@ -32,7 +32,7 @@ class BooksController {
 
     static updateBook(req, res) {
         const { id } = req.params;
-        Books.findByIdAndUpdate(id, { $set: req.body }, (error) => {
+        Book.findByIdAndUpdate(id, { $set: req.body }, (error) => {
             if (!error) {
                 res.status(200).send({ message: 'Book Updated' });
             } else {
@@ -43,7 +43,7 @@ class BooksController {
 
     static deleteBook(req, res) {
         const { id } = req.params;
-        Books.findByIdAndDelete(id, (error) => {
+        Book.findByIdAndDelete(id, (error) => {
             if (!error) {
                 res.status(200).send({ message: 'Book deleted' });
             } else {
