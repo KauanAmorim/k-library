@@ -10,10 +10,6 @@ app.get('/books/:id', (req, res) => {
     res.status(200).send('Retorna livro por id');
 });
 
-app.post('/books', (req, res) => {
-    res.status(201).send('Cria livro');
-});
-
 app.put('/books/:id', (req, res) => {
     res.status(200).send('Altera livro por id');
 });
