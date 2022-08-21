@@ -6,6 +6,6 @@ const AuthorSchema = new mongoose.Schema({
     nacionalidade:  { type: String }
 });
 
-const Author = mongoose.model('Author', AuthorSchema);
+const Author = mongoose.model('authors', AuthorSchema);
 
 export default Author;
