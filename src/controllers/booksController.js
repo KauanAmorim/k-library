@@ -8,6 +8,17 @@ class BooksController {
         })
     }
 
+    static listBookById(req, res) {
+        const { id } = req.params;
+        Books.findById(id, (err, books) => {
+            if (!err) {
+                res.status(200).send(books);
+            } else {
+                res.status(404).send({ message: `${err.message} - Book not found` });
+            }
+        })
+    }
+
     static createBook(req, res) {
         const book = new Books(req.body);
         book.save(function (error) {
@@ -17,6 +28,17 @@ class BooksController {
                 res.status(201).send(book.toJSON());
             }
         })
+    }
+
+    static updateBook(req, res) {
+        const { id } = req.params;
+        Books.findByIdAndUpdate(id, { $set: req.body }, (error) => {
+            if (!error) {
+                res.status(200).send({ message: 'Book Updated' });
+            } else {
+                res.status(500).send({ message: error.message });
+            }
+        });
     }
 }
 
